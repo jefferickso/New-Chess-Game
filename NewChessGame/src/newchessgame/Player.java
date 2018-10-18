@@ -11,4 +11,7 @@ package newchessgame;
  */
 public interface Player {
     
+    
+    Move turn(Board board, Piece.Side z);
+    
 }
