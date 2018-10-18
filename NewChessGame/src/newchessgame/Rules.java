@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  */
 public class Rules implements Runnable{
     
-    public stat final double seconds = 1000.0;
+    public static final double seconds = 1000.0;
     
     public Board board;
     
@@ -65,7 +65,7 @@ public class Rules implements Runnable{
         
         done = false;
         turn = Piece.Side.BLACK;
-        callGameListeners(GameEvent.TRUN);
+        callGameListeners(GameEvent.TURN);
         new Thread(this).start();
         
     }
@@ -122,7 +122,7 @@ public class Rules implements Runnable{
             callGameListeners(GameEvent.GAME_END);
             return;
         }
-        calllGameListeners(GameEvent.TURN);
+        callGameListeners(GameEvent.TURN);
         
         }
     }
@@ -143,7 +143,7 @@ public class Rules implements Runnable{
         
         for(GameListener listener : listen){
             
-            listener.gameEvent(this, type);
+            listener.GameEvent(this, type);
         }
     }
     
@@ -163,7 +163,7 @@ public class Rules implements Runnable{
     
     private long progressStart;
     
-    private long privateUpdate;
+    private long progressUpdate;
     
     private double etaUnit;
     
@@ -195,7 +195,7 @@ public class Rules implements Runnable{
             etaUnit = 0;
         } else {
             long diff = System.currentTimeMillis() - progressStart;
-            double unit = diff / value / MSEC_TO_SEC;
+            double unit = diff / value / seconds;
             if (etaUnit == 0) {
                 etaUnit = unit;
             } else {
@@ -210,7 +210,7 @@ public class Rules implements Runnable{
     public final double getETA() {
         long now = System.currentTimeMillis();
         if (progress > 0) {
-            double diff = (now - progressUpdate) / MSEC_TO_SEC;
+            double diff = (now - progressUpdate) / seconds;
             double t = (etaUnit * (1.0 - progress)) - diff;
             if (t < 0) {
                 return 0;
@@ -233,7 +233,7 @@ public class Rules implements Runnable{
     
         
 
-}
+
 
 
 

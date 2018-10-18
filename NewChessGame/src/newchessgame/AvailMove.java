@@ -66,9 +66,9 @@ public class AvailMove implements Iterable<Move> {
     }
     
     public boolean addTaken(Move move){
-        Piece p = board.getPiece(move.getStart));
+        Piece p = board.getPiece(move.getStart());
         
-        if(board.isfree(move.getNew(), p.getSide())){
+        if(board.isFree(move.getNew(), p.getSide())){
             
             if(!causesCheck(move)){
                 add(move);
@@ -89,7 +89,7 @@ public class AvailMove implements Iterable<Move> {
         
         Piece p = board.getPiece(move.getStart());
         board.move(move);
-        boolean ret = board.check(p.getSide());
+        boolean ret = board.inCheck(p.getSide());
         board.undo();
         return ret;
         
@@ -99,7 +99,7 @@ public class AvailMove implements Iterable<Move> {
         
         for(Move move : this){
             
-            if(l.equeals(move.getNew()))
+            if(l.equals(move.getNew()))
                 return true;
             
         }

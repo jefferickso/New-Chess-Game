@@ -139,7 +139,7 @@ public abstract class Board {
         }
         
         else{
-            setPiece(b, PieceFactory.create(move.getReplacement(), move.getReplaceSide()));
+            setPiece(b, PieceFactory.creation(move.getReplacement(), move.getReplaceSide()));
             
         }
         
@@ -231,10 +231,10 @@ public abstract class Board {
     
     public Board copy(){
         
-        Board b = BoardFactory.create(this.getClass());
+        Board b = BoardFactory.creation(this.getClass());
         
         for(Move move : moveList){
-            b.move( new Mpve(move));
+            b.move( new Move(move));
             
         }
         
