@@ -5,6 +5,8 @@
  */
 package newchessgame;
 
+import java.awt.Image;
+
 /**
  *
  * @author JLErickso
@@ -18,6 +20,7 @@ public abstract class Piece {
     private Board board;
     
     private int move = 0;
+    
     private String name;
     
     public enum Side{
@@ -59,18 +62,18 @@ public abstract class Piece {
         
     }
     
-    public final Board getBoarad(){
+    public Board getBoard(){
         
         return board;
         
     }
     
-    public final void setBoard(final Board gui){
+    public void setBoard(final Board gui){
         
         board = gui;
     }
     
-    public final void setSide(final Side player){
+    public void setSide(final Side player){
         
         z = player;
         
@@ -108,5 +111,10 @@ public abstract class Piece {
         else
             return Side.WHITE;
         }
+    
+      public Image getImage() {
+          
+        return Images.getTile(name + "." + z);
+    }
     }
 

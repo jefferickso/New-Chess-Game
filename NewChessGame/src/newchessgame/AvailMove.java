@@ -81,6 +81,18 @@ public class AvailMove implements Iterable<Move> {
         return false;
     }
     
+        public boolean addTakenOnly(final Move move) {
+        Piece p = board.getPiece(move.getStart());
+        if (board.isFree(move.getNew(), p.getSide()) &&
+            !board.isFree(move.getNew()) &&
+            !causesCheck(move)) {
+
+            add(move);
+            return true;
+        }
+        return false;
+    }
+    
     public boolean causesCheck(Move move){
         
         if(!isCheck){

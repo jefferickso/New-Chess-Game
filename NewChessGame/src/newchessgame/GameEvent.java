@@ -29,6 +29,7 @@ public class GameEvent {
         
     }
     
+    
     public int getType(){
         
         return type;

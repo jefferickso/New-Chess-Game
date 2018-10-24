@@ -5,10 +5,7 @@
  */
 package newchessgame;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
+
 import java.util.logging.Logger;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -20,22 +17,11 @@ import javax.swing.UnsupportedLookAndFeelException;
 public class NewChessGame {
 
 private static final Logger LOG =
-        Logger.getLogger("com.nullprogram.chess.Chess");
+        Logger.getLogger("newchessgame");
 
-    /** The program's running title, prefix only. */
-    private static final String TITLE_PREFIX = "October Chess";
-
-    /**
-     * Hidden constructor.
-     */
     private NewChessGame() {
     }
 
-    /**
-     * The main method of the Chess game application.
-     *
-     * @param args command line arguments
-     */
     public static void main(final String[] args) {
         try {
             String lnf = UIManager.getSystemLookAndFeelClassName();
@@ -49,27 +35,10 @@ private static final Logger LOG =
         } catch (UnsupportedLookAndFeelException e) {
             LOG.warning("Failed to set 'Look and Feel'");
         }
-        new ChessFrame();
+        new GUIFrame();
     }
 
-    /**
-     * Returns the full title for the program, including version number.
-     *
-     * @return the title of the program
-     */
-    public static String getTitle() {
-        String version = "";
-        try {
-            InputStream s = NewChessGame.class.getResourceAsStream("/version.txt");
-            Reader isr = new InputStreamReader(s, "UTF-8");
-            BufferedReader in = new BufferedReader(isr);
-            version = in.readLine();
-            in.close();
-        } catch (java.io.IOException e) {
-            LOG.warning("failed to read version info");
-            version = "";
-        }
-        return TITLE_PREFIX + " " + version;
-    }
+
+
     
 }

@@ -20,7 +20,7 @@ public class BISHOP extends Piece{
     @Override
     public AvailMove getMoves(boolean inCheck){
         
-        AvailMove list = new AvailMove(getBoard, inCheck);
+        AvailMove list = new AvailMove(getBoard(), inCheck);
         list = getMoves(this, list);
         return list;
     }
@@ -52,7 +52,7 @@ public class BISHOP extends Piece{
         x = start.getX();
         y = start.getY();
         
-        while( x >= 0 && y < p.getBoard.getHeight()){
+        while( x >= 0 && y < p.getBoard().getH()){
             
             x--;
             y++;
@@ -72,7 +72,7 @@ public class BISHOP extends Piece{
         x = start.getX();
         y = start.getY();
         
-        while( x < p.getBoard().getWidth() && y >= 0){
+        while( x < p.getBoard().getW() && y >= 0){
             
             x++;
             y--;
@@ -92,7 +92,7 @@ public class BISHOP extends Piece{
         x = start.getX();
         y = start.getY();
         
-        while( x < p.getBoard().getWidth()&& y < p.getBoard.getHeight()){
+        while( x < p.getBoard().getW()&& y < p.getBoard().getH()){
             
             x++;
             y++;

@@ -50,7 +50,7 @@ public class ROOK extends Piece{
             x = start.getX();
             y = start.getY();
             
-            while(x < p.getBoard().getWidth()){
+            while(x < p.getBoard().getW()){
                 x++;
                 Location l = new Location(x, y);
                 
@@ -69,7 +69,7 @@ public class ROOK extends Piece{
         x = start.getX();
         y = start.getY();
             
-        while(y < p.getBoard().getHeight()){
+        while(y < p.getBoard().getH()){
             y++;
             Location l = new Location(x, y);
                 

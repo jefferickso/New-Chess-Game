@@ -37,7 +37,7 @@ public class PAWN extends Piece{
         list.addTakenOnly(takeLeft);
         Move takeRight = new Move(l , new Location(l , 1, 1 * direction));
         addUpgrade(takeRight);
-        list.addTakeOnly(takeRight);
+        list.addTakenOnly(takeRight);
         
         Move last = board.last();
         
@@ -70,11 +70,11 @@ public class PAWN extends Piece{
     
     public void addUpgrade(Move move){
         
-        if (move.getNext().getY() != upgradeR())
+        if (move.getNew().getY() != upgradeR())
             return;
         
-        move.setNext(new Move(move.getDest(), null));
-        Move upgrade = new Move(null, move.getDest());
+        move.setNext(new Move(move.getNew(), null));
+        Move upgrade = new Move(null, move.getNew());
         upgrade.setReplacement("QUEEN");
         upgrade.setReplaceSide(getSide());
         move.getNext().setNext(upgrade);
@@ -88,7 +88,7 @@ public class PAWN extends Piece{
         }
         
         else
-            return getBoard().getHeight() - 1;
+            return getBoard().getH() - 1;
         
         }
     

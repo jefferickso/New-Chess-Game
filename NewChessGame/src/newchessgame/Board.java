@@ -50,7 +50,7 @@ public abstract class Board {
                 Location l = new Location(x, y);
                 Piece p = getPiece(l);
                 
-                if(p instanceof King && p.getSide() == s){
+                if(p instanceof KING && p.getSide() == s){
                     
                     return l;
                     

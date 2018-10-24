@@ -42,31 +42,31 @@ public class StandardBoard extends Board{
     
     public StandardBoard(){
         
-        setWidth(WIDTH);
-        setHeight(HEIGHT);
+        setW(WIDTH);
+        setH(HEIGHT);
         clear();
         
         for (int x = 0; x < WIDTH; x++){
-            setPiece(x, wPawns, new Pawn(Piece.Side.WHITE));
-            setPiece(x, bPawns, new Pawn(Piece.Side.BLACK));
+            setPiece(x, wPawns, new PAWN(Piece.Side.WHITE));
+            setPiece(x, bPawns, new PAWN(Piece.Side.BLACK));
         } 
         
         setPiece(lRook,     wRow, new ROOK(Piece.Side.WHITE));
         setPiece(rRook,     wRow, new ROOK(Piece.Side.WHITE));
         setPiece(lRook,     bRow, new ROOK(Piece.Side.BLACK));
         setPiece(rRook,     bRow, new ROOK(Piece.Side.BLACK));
-        setPiece(lKnight,   wRow, new Knight(Piece.Side.WHITE));
-        setPiece(rKnight,   wRow, new Knight(Piece.Side.WHITE));
-        setPiece(lKnight,   bRow, new Knight(Piece.Side.BLACK));
-        setPiece(rKnight,   bRow, new Knight(Piece.Side.BLACK));
-        setPiece(lBishop,   wRow, new Bishop(Piece.Side.WHITE));
-        setPiece(rBishop,   wRow, new Bishop(Piece.Side.WHITE));
-        setPiece(lBishop,   bRow, new Bishop(Piece.Side.BLACK));
-        setPiece(rBishop,   bRow, new Bishop(Piece.Side.BLACK));
-        setPiece(Queen,     wRow, new Queen(Piece.Side.WHITE));
-        setPiece(Queen,     bRow, new Queen(Piece.Side.BLACK));
-        setPiece(King,      wRow, new King(Piece.Side.WHITE));
-        setPiece(King,      bRow, new King(Piece.Side.BLACK));
+        setPiece(lKnight,   wRow, new KNIGHT(Piece.Side.WHITE));
+        setPiece(rKnight,   wRow, new KNIGHT(Piece.Side.WHITE));
+        setPiece(lKnight,   bRow, new KNIGHT(Piece.Side.BLACK));
+        setPiece(rKnight,   bRow, new KNIGHT(Piece.Side.BLACK));
+        setPiece(lBishop,   wRow, new BISHOP(Piece.Side.WHITE));
+        setPiece(rBishop,   wRow, new BISHOP(Piece.Side.WHITE));
+        setPiece(lBishop,   bRow, new BISHOP(Piece.Side.BLACK));
+        setPiece(rBishop,   bRow, new BISHOP(Piece.Side.BLACK));
+        setPiece(Queen,     wRow, new QUEEN(Piece.Side.WHITE));
+        setPiece(Queen,     bRow, new QUEEN(Piece.Side.BLACK));
+        setPiece(King,      wRow, new KING(Piece.Side.WHITE));
+        setPiece(King,      bRow, new KING(Piece.Side.BLACK));
         
     }
     
@@ -86,9 +86,9 @@ public class StandardBoard extends Board{
     public int moveCount(Piece.Side s){
         int count  = 0;
         
-        for(int y = 0; y < getHeight(); y++){
+        for(int y = 0; y < getH(); y++){
             
-            for(int x = 0; x < getWidth(); x++){
+            for(int x = 0; x < getW(); x++){
                 Piece p = getPiece(new Location(x, y));
                 
                 if((p != null) && (p.getSide() == s)) {
@@ -115,13 +115,13 @@ public class StandardBoard extends Board{
         if(kingLoc == null)
             return false;
         
-        for(int y = 0; y < getHeight(); y++){
+        for(int y = 0; y < getH(); y++){
             
-            for(int x = 0; x < getWidth(); x++){
+            for(int x = 0; x < getW(); x++){
                 
                 Piece p = getPiece( new Location(x, y));
                 
-                if((p != null) && (p.getSide() == attack) && p.getMoves(false).containsDest(kingLoc))
+                if((p != null) && (p.getSide() == attack) && p.getMoves(false).isNext(kingLoc))
                     return true;
             }
         }

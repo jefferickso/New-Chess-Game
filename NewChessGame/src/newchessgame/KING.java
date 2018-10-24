@@ -64,7 +64,7 @@ public class KING extends Piece{
     }
     
     public Move castle(int direction){
-        int distance = getBoard().geWidth() / 2 - 2;
+        int distance = getBoard().getW() / 2 - 2;
         
         Location l = getLocation();
         
@@ -76,7 +76,7 @@ public class KING extends Piece{
             
         }
         else{
-            max = getBoard().getWidth() - 1;
+            max = getBoard().getW() - 1;
         }
         
         Location rookLoc = new Location(max, l.getY());
@@ -96,19 +96,23 @@ public class KING extends Piece{
             return kingCast;
         }
         
-        public boolean emptyRow(Location begin, int direction, int max){
+        return null;
+    }
+        
+  
+    public boolean emptyRow(Location begin, int direction, int max){
             
-            for(int i = begin.getX() + direction; i != max; i+= direction){
-                Location l = new Location(i, begin.getY());
+        for(int i = begin.getX() + direction; i != max; i+= direction){
+            Location l = new Location(i, begin.getY());
                 
-                if(getBoard().getPiece(l) != null || enemyMoves().containsDest(l)){
+            if(getBoard().getPiece(l) != null || enemyMoves().isNext(l)){
                 
-                return false;
+            return false;
             }
                 
-            }
-            return true;
         }
+        return true;
+    }
         
         public AvailMove enemyMoves(){
             
@@ -117,7 +121,7 @@ public class KING extends Piece{
                 return enemy;
             }
             
-            enemy = getBoard().allMoves(opposite(getSide()), false);
+            enemy = getBoard().allMoves(enemy(getSide()), false);
             return enemy;
         }
         
@@ -127,7 +131,7 @@ public class KING extends Piece{
                 return inCheck;
             }
             
-            inCheck = getboard().check(getSide());
+            inCheck = getBoard().inCheck(getSide());
             return inCheck;
         }
         

@@ -90,15 +90,15 @@ public class Rules implements Runnable{
             
         }
         
-        Move move = player.takeTurn(getBoard(), turn);
+        Move move = player.turn(getBoard(), turn);
         board.move(move);
-        setProgess(0);
+      
         if(done){
             
             return;
         }
         
-        Piece.Side opp = Piece.opposite(turn);
+        Piece.Side opp = Piece.enemy(turn);
         
         if(board.checkMate(opp)){
             done = true;
@@ -143,7 +143,7 @@ public class Rules implements Runnable{
         
         for(GameListener listener : listen){
             
-            listener.GameEvent(this, type);
+            listener.gameEvent(new GameEvent(this, type));
         }
     }
     
@@ -167,6 +167,9 @@ public class Rules implements Runnable{
     
     private double etaUnit;
     
+    private static final Logger LOG =
+        Logger.getLogger("newchessgame");
+    
     public void setStatus(String message){
         
         LOG.info("status: " + message);
@@ -187,7 +190,7 @@ public class Rules implements Runnable{
         
     }
     
-        public final void setProgress(final float value) {
+    public final void setProgress(float value) {
         LOG.finest("Game progress: " + value);
         progress = value;
         if (value == 0) {
@@ -225,6 +228,8 @@ public class Rules implements Runnable{
     public final float getProgress() {
         return progress;
     }
+
+
 }
     
         

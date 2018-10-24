@@ -22,8 +22,8 @@ public class EmptyBoard extends StandardBoard{
     
     public EmptyBoard(int w, int h){
         
-        setWidth(w);
-        setHeight(h);
+        setW(w);
+        setH(h);
         clear();
     }
     

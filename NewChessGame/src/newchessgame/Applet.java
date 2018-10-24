@@ -37,13 +37,13 @@ public class Applet extends JApplet implements GameListener{
         }
 
         StandardBoard board = new StandardBoard();
-        BoardPanel panel = new BoardPanel(board);
+        Panel panel = new Panel(board);
         add(panel);
         Rules game = new Rules(board);
         game.seat(panel, new Minimax(game));
         game.addGameListener(this);
         game.addGameListener(panel);
-        game.begin();
+        game.start();
     }
 
     @Override

@@ -63,7 +63,7 @@ public class Location implements Comparable<Location> {
     
         }
     
-    public int comapreTo(final Location l){
+    public int compareTo(final Location l){
         
         if(l.y == y)
             return x - l.x;
